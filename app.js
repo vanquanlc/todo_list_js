@@ -144,6 +144,13 @@ const app = {
                         `            
                        } ).join("") 
                        :
+
+                       app.completePage === true && (TODOS.every((todo) => todo.completed === false))
+                       ?
+                       `<tr>
+                           <td class = "notask" colspan="3">No task</td>
+                       </tr>` 
+                       :
                        TODOS.filter((todo)=>  todo.completed === true).map((todo, index) => {
                         return `<tr>
                             <td>${index + 1}</td>
