@@ -14,7 +14,7 @@
     list-style: none;
     text-decoration: none;
     box-sizing: border-box;
-    font-family: Florence, cursive;
+    font-family: Florence, 'Times New Roman', serif;
 }
 html{
     font-size: 16px;
