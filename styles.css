@@ -181,7 +181,7 @@ tbody tr{
     width: 50px;
     position: absolute;
     left: calc(50% - 25px);
-    top: calc(50% - 25px);
+    top: calc(50vh - 25px);
 }
 .loading i{
     transform-origin: center;

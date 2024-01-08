@@ -30,16 +30,16 @@ const loadingBar = () => {
 const app = {
     completePage : JSON.parse(localStorage.getItem(page)) || false,
     handleAddTask: function(){
-        const nameTask = event.target.parentNode.querySelector('.add-task__name').value;
-        if (!nameTask) {
-            console.log("novalue");
+        const nameTask = event.target.parentNode.querySelector('.add-task__name');
+        if (!nameTask.value) {
+            nameTask.style =  'border: 1px solid var(--danger-color);'
             return;
         }
         TODOS = [
             ...TODOS, 
             {
                 id: "ID"+Math.ceil(Math.random()*100000),
-                name: nameTask, 
+                name: nameTask.value, 
                 completed: false
             }];
         setLocalStorage(todo, TODOS)
@@ -60,12 +60,8 @@ const app = {
        event.target.style = 'display:none';
     },
     handleSubmitUpdate: (id) => {
-        const data = event.target.parentNode.parentNode.querySelector('.modal-update__name-task').value;
-        if (!data) {
-            
-            return;
-        }
         const todoModify = TODOS.find(todo => todo.id === id);
+        const data = event.target.parentNode.parentNode.querySelector('.modal-update__name-task').value || todoModify.name ;
         if (todoModify) {
             todoModify.name = data;
         }
