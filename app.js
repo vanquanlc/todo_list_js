@@ -170,7 +170,7 @@ const app = {
         `
       containerContent.innerHTML = html
       footer.innerHTML = htmls`
-        <button onclick="app.handlePageComplete()">${app.completePage?"Task completed ": "Task pending"}</button>        
+        <button onclick="app.handlePageComplete()">${!app.completePage?"Task completed ": "Task pending"}</button>        
       `
     }
     ,
