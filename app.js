@@ -25,14 +25,22 @@ const loadingBar = () => {
     setTimeout(()=>{
         $('.loading').style = 'display : none;'
         app.render();
+        $('.success').style.display = 'flex';
     },1000);
+    setTimeout(()=>{
+        $('.success').style.display = 'none';
+    }, 2000)
 }
 const app = {
     completePage : JSON.parse(localStorage.getItem(page)) || false,
     handleAddTask: function(){
         const nameTask = event.target.parentNode.querySelector('.add-task__name');
+        const validate =  $('.todolist__add-task')
+        nameTask.onclick = function() {
+            validate.classList.remove('validate')
+        }
         if (!nameTask.value) {
-            nameTask.style =  'border: 1px solid var(--danger-color);'
+            validate.classList.add('validate')
             return;
         }
         TODOS = [
@@ -98,9 +106,10 @@ const app = {
         const html = htmls`
             ${  !app.completePage
                 &&
-                `<div class="todolist__add-task">
+                `<div class="todolist__add-task ">
                     <input type="text" class="todolist_input add-task__name" placeholder="Task name">
                      <button class="btn add-task__btn" onclick="app.handleAddTask()">Add task</button>
+                     <span class="validate-value">Please enter value!</span>
                 </div>`
 
             }

@@ -39,6 +39,7 @@ html{
     margin: 1rem auto ;
 }
 .todolist__add-task{
+    position: relative;
     display: grid;
     grid-template-columns: 5fr 1fr;
     gap: 0.5rem;
@@ -49,6 +50,9 @@ html{
     padding: 0.5rem;
     border-radius: 5px 0 0 5px;
     outline: none;
+}
+.validate .add-task__name{
+    border: 1px solid var(--danger-color);
 }
 .add-task__name:focus{
     border-color: var(--success-color);
@@ -65,7 +69,17 @@ html{
     cursor: pointer;
     transition: 0.5s;
 }
-
+.validate-value{
+    display: none;
+    color: var(--danger-color);
+    font-size: .8rem;
+    position: absolute;
+    bottom: -1.2rem;
+    left: 10px;
+}
+.validate .validate-value{
+    display: block;
+}
 table{
     width: 100%;
     margin-top: 1rem;
@@ -173,7 +187,7 @@ tbody tr{
     }
 }
 
-.loading{
+.loading, .success{
     display: none;
     font-size: 2rem;
     color: var(--danger-color);
@@ -204,13 +218,25 @@ tbody tr{
     }
 }
 
-@keyframes faceIn {
-    form{
+@keyframes faceInOut {
+    0%, 100%{
         opacity: 0;
-    }to{
+    }50%{
+        opacity: 1;
+    }75%{
+        opacity: 1;
+    }90%
+    {
         opacity: 1;
     }
 }
-.active{
-    animation: faceOut 0.5s linear;
+.success{
+    height: 60px; width: 60px;
+    color: var(--success-color);
+    background-color: #ccccccc4;
+    border-radius: 4px;
+    animation: faceInOut 1s linear;
+}
+.success i{
+    margin: auto;
 }
